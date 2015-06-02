@@ -1,0 +1,40 @@
+使用方法
+
+1－－》:将Lib中的Class文件拖入项目中出现选项的时候选择第一项（create groups for any added folder），其他照常选择，点击finish
+
+
+2:－－》将Lib中的EmotionIcons拖入项目中，注意：这里在出现选项的时候选中第二个（create folder reference for any added folder），其他照常，点击finish
+
+
+****************:关于键盘弹出，我们一般是点一一个按钮，先弹出一个控制器，并且在控制器里面有文本输入框（这里都已经很好的实现了）,然后使用我们的键盘进行编辑*****************
+
+
+3:－－》在需要点击按钮弹出控制器的界面中（这里是指：你要点的那个按钮在那个界面或者控制器中），先在.m文件导入对应需要弹出的控制器，如：#import "HWComposeViewController.h"
+
+
+4:－－》在需要点击的控制器里面添加一个按钮（这里也可以是你之前就定义好了的按钮，只是还没有实现），
+#import "HWComposeViewController.h"
+
+
+5:－－》实现那个按钮的点击方法，如：在方法里面输入下面代码
+    //需要弹出的控制器（文本输入，多功能表情键盘）
+    HWComposeViewController *compose = [[HWComposeViewController alloc] init];
+    //使用一个导航来来封装我们需要弹出的控制器
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:compose];
+    //使用modal的方式显示控制器
+    [self presentViewController:nav animated:YES completion:nil];
+
+
+6：－－》到这里就基本上实现了，在带有placeholder的文本框中输入多行文字（注：iOS中能实现类似功能的挚友UItextFiled和UITextView，但是UItextFiled不能输入多行，UITextView没有placeholder属性：这里是使用继承自UITextView的方式，在上面drawRect一个placeholder属性上去，然后实现相应的方法监听），还有就是你可以实现各种表情的输入，相机，相册的使用
+
+
+7:－－》最后也是最重要的一点：
+***************
+1:如果你需要修改或者增长一些表情必须和上面一样的方式导入的表情
+2:如果需要实现更多功能的键盘或则界面的优化，必须找到相应的类，不要随便修改类或者方法
+3:本功能是笔者在学习MJ将新浪微博的时候整理好的，需要各位不要吐槽，也希望以后开发中能够使用到他
+*************************
+
+
+
+
